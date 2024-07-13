@@ -1,7 +1,10 @@
 import tkinter as tk
+import subprocess
+import sys
 
 def librarian_mode():
-    print("Librarian Mode activated")
+    python_path = sys.executable  # Get the path of the current Python interpreter
+    subprocess.run([python_path, 'Librarian.py'])
 
 def normal_mode():
     print("Normal Mode activated")
