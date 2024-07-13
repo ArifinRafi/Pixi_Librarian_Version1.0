@@ -3,6 +3,7 @@ from gtts import gTTS
 from playsound import playsound
 import os
 import json
+import tkinter as tk
 
 # Initialize the recognizer
 recognizer = sr.Recognizer()
@@ -56,23 +57,51 @@ def generate_response(input_text):
             return response
     return "দুঃখিত, আমি আপনার প্রশ্নের উত্তর জানি না।"
 
-def respond(text):
+def respond(text, response_label):
     if not text:
         return
     response = generate_response(text)
     print(f"Responding with: {response}")
+    response_label.config(text=response)  # Update the label with the response text
     tts = gTTS(text=response, lang='bn')
     tts.save("response.mp3")
     playsound("response.mp3")
     os.remove("response.mp3")
 
+def close_program():
+    print("Closing the program.")
+    root.destroy()
+    os._exit(0)  # Ensure the program terminates
+
 def pixi():
-    while True:
+    global root, input_label, response_label
+    root = tk.Tk()
+    root.title("Librarian Robot Version 1.0")
+    window_width = 1200
+    window_height = 800
+    root.geometry(f"{window_width}x{window_height}")
+
+    input_label = tk.Label(root, text="You said:", wraplength=window_width - 20, justify="left")
+    input_label.pack(pady=10)
+    
+    response_label = tk.Label(root, text="Response:", wraplength=window_width - 20, justify="left")
+    response_label.pack(pady=10)
+
+    close_button = tk.Button(root, text="Close", command=close_program)
+    close_button.pack(pady=20)
+
+    def listen_and_respond():
         question = listen()
         if question:
-            respond(question)
+            input_label.config(text=f"You said: {question}")
+            respond(question, response_label)
         else:
             print("Sorry, I could not understand. Please try again.")
+    
+    listen_button = tk.Button(root, text="Listen", command=listen_and_respond)
+    listen_button.pack(pady=20)
+
+    root.mainloop()
 
 if __name__ == "__main__":
     pixi()
