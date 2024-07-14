@@ -1,0 +1,8 @@
+{
+        "keywords_responses": {
+            "hello": ["Hi there! How can I assist you today?", "Hello! How can I help you?", "Greetings! How may I assist?"],
+            "bye": ["Goodbye! Have a great day!", "Bye! Take care!", "Farewell! Have a nice day!"],
+            "name": ["I am Pixi, your autonomous humanoid robot.", "My name is Gorky, here to assist you."]
+        }
+    }
+    
