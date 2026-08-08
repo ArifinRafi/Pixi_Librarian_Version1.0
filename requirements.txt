@@ -1,0 +1,29 @@
+# Pixi - Autonomous Humanoid Librarian Robot
+# Version 1.0
+#
+# On the Raspberry Pi 5B install the system packages first, the wheels for
+# these are not always available:
+#
+#   sudo apt install python3-tk python3-pyaudio portaudio19-dev \
+#                    espeak flac mpg123 fonts-noto-core
+#
+# On a Mac development machine PyAudio needs portaudio from Homebrew:
+#
+#   brew install portaudio
+#
+# Then:  pip install -r requirements.txt
+#
+# playsound is deliberately NOT listed. Its installer is broken on newer
+# setuptools and it needs gstreamer on Linux. speech.py falls back to a
+# command line player instead - afplay on the Mac, mpg123 on the Pi.
+
+SpeechRecognition==3.8.1
+PyAudio==0.2.11
+gTTS==2.2.4
+pyttsx3==2.90
+wikipedia==1.4.0
+pyjokes==0.6.0
+requests==2.27.1
+beautifulsoup4==4.11.1
+pyserial==3.5
+pygame==2.1.2

@@ -1,0 +1,26 @@
+# Virtual environments - machine specific, never commit these
+pixi/
+.venv/
+venv/
+env/
+
+# Byte-compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# gTTS scratch file, written and deleted while Pixi is talking
+response.mp3
+
+# Manuscripts and internal documents are kept out of the public repository
+Document/
+*.docx
+
+# Editor and OS noise
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local tool configuration
+.claude/
